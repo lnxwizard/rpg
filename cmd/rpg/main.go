@@ -17,24 +17,33 @@ func main() {
 	// parse command line flags
 	flag.Parse()
 
-	var charSet string
+	// define uppercase letters, lowercase letters, numbers and special characters
+	var (
+		charSet      string
+		letters      string
+		numbers      string
+		specialChars string
+	)
 
-	// define character sets
-	var letters string
+	// if uppercaseFlag is true, put uppercase letters inside the password
 	if *uppercaseFlag {
 		letters += "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 		charSet += letters
 	}
+
+	// if lowercaseFlag is true, put lowercase letters inside the password
 	if *lowercaseFlag {
 		letters += "abcdefghijklmnopqrstuvwxyz"
 		charSet += letters
 	}
-	var numbers string
+
+	// if numberFlag is true, put number inside the password
 	if *numberFlag {
 		numbers = "0123456789"
 		charSet += numbers
 	}
-	var specialChars string
+
+	// if specialCharFlag is true, put special characters inside the password
 	if *specialCharFlag {
 		specialChars = "!@#$%^&*()-_=+,.?/:;{}[]"
 		charSet += specialChars
