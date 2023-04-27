@@ -45,7 +45,7 @@ func main() {
 
 	// if specialCharFlag is true, put special characters inside the password
 	if *specialCharFlag {
-		specialChars = "!@#$%^&*()-_=+,.?/:;{}[]"
+		specialChars = "!@#$%^&*()-_=+,.?/:;{}[]<>|"
 		charSet += specialChars
 	}
 
