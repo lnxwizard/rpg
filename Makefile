@@ -1,5 +1,8 @@
 run/rpg:
 	go run cmd/rpg/main.go
 
-clean/rpg:
+build/rpg:
+	go build cmd/rpg/main.go
+
+clean:
 	go clean

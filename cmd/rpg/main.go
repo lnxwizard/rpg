@@ -7,7 +7,7 @@ import (
 )
 
 func main() {
-	// define command line flags
+	// define command line flags (length, uppercase letter, lowercase letter, number and special characters)
 	lengthFlag := flag.Int("length", 8, "the length of the password")
 	uppercaseFlag := flag.Bool("uppercase", false, "include uppercase letters in the password")
 	lowercaseFlag := flag.Bool("lowercase", false, "include lowercase letters in the password")
@@ -58,5 +58,5 @@ func main() {
 	}
 
 	// print the password
-	fmt.Println(string(password))
+	fmt.Println("Your RP:", string(password))
 }
