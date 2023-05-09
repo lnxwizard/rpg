@@ -9,6 +9,8 @@ First, you need to install rpg from [here](https://github.com/AlperAkca79/rpg/re
 rpg [arguments]
 ```
 
+![rpg_usage](https://github.com/AlperAkca79/cat/assets/91411319/db469b29-a4ec-48c0-92f1-2cf7d0f312d2)
+
 ### Arguments
 
 `-length <integer>`: Chance to add number to your password. You can type from 0 to infinity.
