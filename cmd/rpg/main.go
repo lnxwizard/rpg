@@ -4,20 +4,25 @@ import (
 	"flag"
 	"fmt"
 	"math/rand"
+	"os"
+
+	"github.com/AlperAkca79/rpg/pkg/utils"
+	"github.com/cli/browser"
 )
 
 func main() {
-	// define command line flags (length, uppercase letter, lowercase letter, number and special characters)
-	lengthFlag := flag.Int("length", 8, "the length of the password")
-	uppercaseFlag := flag.Bool("uppercase", false, "include uppercase letters in the password")
-	lowercaseFlag := flag.Bool("lowercase", false, "include lowercase letters in the password")
-	numberFlag := flag.Bool("number", false, "include numbers in the password")
-	specialCharFlag := flag.Bool("special", false, "include special characters in the password")
+	// Define command line flags (length, uppercase letter, lowercase letter, number and special characters)
+	lengthFlag := flag.Int("length", 8, "The length of the password")
+	uppercaseFlag := flag.Bool("uppercase", false, "Include uppercase letters in the password")
+	lowercaseFlag := flag.Bool("lowercase", false, "Include lowercase letters in the password")
+	numberFlag := flag.Bool("number", false, "Include numbers in the password")
+	specialCharFlag := flag.Bool("special", false, "Include special characters in the password")
+	repoFlag := flag.Bool("repo", false, "Opens GitHub repository of rpg in your browser.")
 
-	// parse command line flags
+	// Parse command line flags
 	flag.Parse()
 
-	// define uppercase letters, lowercase letters, numbers and special characters
+	// Define uppercase letters, lowercase letters, numbers and special characters
 	var (
 		charSet      string
 		letters      string
@@ -25,38 +30,38 @@ func main() {
 		specialChars string
 	)
 
-	// if uppercaseFlag is true, put uppercase letters inside the password
-	if *uppercaseFlag {
+	if len(os.Args) < 2 {
+		fmt.Println("Usage: rpg [options]")
+	}
+
+	switch {
+	case *uppercaseFlag:
 		letters += "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 		charSet += letters
-	}
-
-	// if lowercaseFlag is true, put lowercase letters inside the password
-	if *lowercaseFlag {
+	case *lowercaseFlag:
 		letters += "abcdefghijklmnopqrstuvwxyz"
 		charSet += letters
-	}
-
-	// if numberFlag is true, put number inside the password
-	if *numberFlag {
+	case *numberFlag:
 		numbers = "0123456789"
 		charSet += numbers
-	}
-
-	// if specialCharFlag is true, put special characters inside the password
-	if *specialCharFlag {
+	case *specialCharFlag:
 		specialChars = "!@#$%^&*()-_=+,.?/:;{}[]<>|"
 		charSet += specialChars
+	case *repoFlag:
+		err := browser.OpenURL("https://github.com/AlperAkca79/rpg")
+		if err != nil {
+			utils.PrintError(err)
+		}
 	}
 
-	// initialize the password variable
+	// Initialize the password variable
 	password := make([]byte, *lengthFlag)
 
-	// add characters to the password
+	// Add characters to the password
 	for i := 0; i < *lengthFlag; i++ {
 		password[i] = charSet[rand.Intn(len(charSet))]
 	}
 
-	// print the password
-	fmt.Println("Your RP:", string(password))
+	// Printing Password
+	utils.PrintPassword(string(password))
 }
