@@ -1,3 +1,6 @@
+# rpg
+![rpg](https://github.com/AlperAkca79/rpg/assets/91411319/e49ec342-061c-45be-b993-70ac9629f7ae)
+
 # What is rpg?
 rpg is random password generator runs in your terminal/console.
 
@@ -6,12 +9,12 @@ First, you need to install rpg from [here](https://github.com/AlperAkca79/rpg/re
 
 - Open your terminal and type this:
 ```
-rpg [arguments]
+rpg [options]
 ```
 
 ![rpg_usage](https://github.com/AlperAkca79/cat/assets/91411319/db469b29-a4ec-48c0-92f1-2cf7d0f312d2)
 
-### Arguments
+### Options
 
 `-length <integer>`: Chance to add number to your password. You can type from 0 to infinity.
 
@@ -22,6 +25,10 @@ rpg [arguments]
 `-number`: Chance to add numbers to your password. (0123456789)
 
 `-special`: Chance to add special characters to your password. This argument contains the special characters `!`, `@`, `#`, `$`, `%`, `^`, `&`, `*`, `(`, `)`, `_`, `-`, `+`, `=`, `[`, `]`, `{`, `}`, `|`, `;`, `:`, `,`, `.`, `<`, `>` and `?`.
+
+`-repo`: Opens GitHub repository of rpg in your browser.
+
+`-h`, `--help`: Prints help message of rpg. 
 
 ### Examples
 - Command:
